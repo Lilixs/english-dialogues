@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Everyday Dialogues — Listening · 每日对话听力</title>
+<style>
+body { font-family: "Noto Sans CJK SC", sans-serif; background:#f4f7fb; color:#1a1a1a; margin:0; padding:18px; }
+header { max-width: 860px; margin: 0 auto 18px; text-align:center; }
+header h1 { color:#14467c; font-size: 30px; margin: 8px 0 4px; }
+header p { color:#444; font-size: 17px; line-height:1.6; margin: 4px 0; }
+.card { background:#fff; border-radius:14px; box-shadow:0 2px 10px rgba(0,0,0,.08); max-width:860px; margin:0 auto 20px; padding:20px 22px; }
+.card h2 { color:#14467c; font-size:22px; margin:0 0 6px; line-height:1.4; }
+.card h2 .cnt { color:#333; font-size:19px; }
+.scene { color:#555; font-size:16px; margin:2px 0 12px; line-height:1.55; }
+audio { width:100%; height:52px; }
+.btns { display:flex; gap:10px; flex-wrap:wrap; margin:14px 0 6px; }
+button { font-size:17px; padding:12px 16px; border-radius:10px; border:2px solid #14467c; background:#fff; color:#14467c; cursor:pointer; }
+button.loop.on { background:#c0392b; border-color:#c0392b; color:#fff; }
+.counter { font-size:17px; font-weight:bold; color:#c0392b; margin:4px 0 2px; }
+.speedrow { display:flex; align-items:center; gap:14px; margin:10px 0 2px; }
+.speedrow label { font-size:16.5px; font-weight:bold; color:#14467c; white-space:nowrap; }
+.speedrow input[type=range] { flex:1; height:38px; accent-color:#14467c; cursor:pointer; }
+ol { margin:10px 0 4px; padding-left:26px; }
+li { font-size:16.5px; margin:7px 0; line-height:1.5; padding:4px 6px; border-radius:8px; }
+li .who { display:inline-block; font-weight:bold; font-size:14.5px; padding:2px 9px; border-radius:20px; margin-right:8px; vertical-align:middle; }
+li .who.a { background:#dcebfd; color:#14467c; }
+li .who.b { background:#fde3ee; color:#9c2b5e; }
+li .en { font-weight:bold; color:#1a1a1a; }
+li .zh { display:block; color:#777; font-size:15.5px; margin:2px 0 0 6px; }
+li.focus { background:#fdeeda; outline:2px solid #e67e22; }
+.pbtn { font-size:14.5px; padding:6px 10px; border-radius:8px; border:2px solid #14467c; background:#fff; color:#14467c; cursor:pointer; margin-right:4px; vertical-align:middle; }
+.pbtn.rpt.on { background:#c0392b; border-color:#c0392b; color:#fff; }
+.pcount { color:#c0392b; font-weight:bold; font-size:14.5px; margin-left:6px; }
+footer { text-align:center; color:#777; font-size:14px; margin: 8px 0 20px; }
+</style></head><body>
+<header>
+<h1>🎧 Everyday Dialogues · 每日对话</h1>
+<p><b>One day in Ben's life — a little story in 5 talks.</b><br>本的一天——5 段对话组成的小故事。</p>
+<p>Tap ▶ to listen to the whole talk. 跟着读，出声读。<br>Tap <b>▶</b> beside one line to hear only that line.<br>Tap <b>🔁 One · 单句</b> and that one line repeats — focus on one sentence at a time.<br>点某一行旁边的 <b>🔁 单句</b>，这一行就会反复播放，一次只专心练一句。</p>
+</header>
+
+<section class="card">
+  <h2>Dialogue 1 · Morning at Home<br><span class="cnt">在家里的早晨</span></h2>
+  <p class="scene">Ben rents a room from Mrs. Chen. It is breakfast time.<br>本租住在陈阿姨家。现在是早餐时间。</p>
+  <audio id="a1" controls preload="metadata" src="d1.mp3"></audio>
+  <div class="btns">
+    <button class="loop" onclick="toggleLoop(1, this)">🔁 Repeat · 循环播放: OFF</button>
+  </div>
+  <div class="speedrow"><label>🐢 Speed · 语速 <span id="s1v">1.00×</span></label><input type="range" min="0.5" max="1.5" step="0.05" value="1" oninput="sliderSpeed(1, this)"></div>
+  <div class="counter" id="c1">🔁 Repeated: 0 times · 已重复：0 次</div>
+  <ol><li id="row1-1"><button class="pbtn" onclick="playLine(1,1)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr1-1" onclick="toggleLineLoop(1,1)">🔁 One · 单句</button> <span class="who b">Mrs. Chen</span><span class="en">Good morning, Ben. Did you sleep well?</span><span class="pcount" id="pc1-1"></span><span class="zh">早上好，本。你昨晚睡得好吗？</span></li><li id="row1-2"><button class="pbtn" onclick="playLine(1,2)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr1-2" onclick="toggleLineLoop(1,2)">🔁 One · 单句</button> <span class="who a">Ben</span><span class="en">Morning, Mrs. Chen. Yes, I slept very well, thank you.</span><span class="pcount" id="pc1-2"></span><span class="zh">早上好，陈阿姨。睡得很好，谢谢。</span></li><li id="row1-3"><button class="pbtn" onclick="playLine(1,3)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr1-3" onclick="toggleLineLoop(1,3)">🔁 One · 单句</button> <span class="who b">Mrs. Chen</span><span class="en">Breakfast is ready. Eggs and toast today.</span><span class="pcount" id="pc1-3"></span><span class="zh">早餐好了。今天吃鸡蛋和吐司。</span></li><li id="row1-4"><button class="pbtn" onclick="playLine(1,4)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr1-4" onclick="toggleLineLoop(1,4)">🔁 One · 单句</button> <span class="who a">Ben</span><span class="en">Smells great. What are your plans for today?</span><span class="pcount" id="pc1-4"></span><span class="zh">闻起来真香。您今天有什么安排？</span></li><li id="row1-5"><button class="pbtn" onclick="playLine(1,5)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr1-5" onclick="toggleLineLoop(1,5)">🔁 One · 单句</button> <span class="who b">Mrs. Chen</span><span class="en">I&#x27;m going to the market. And you?</span><span class="pcount" id="pc1-5"></span><span class="zh">我要去市场。你呢？</span></li><li id="row1-6"><button class="pbtn" onclick="playLine(1,6)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr1-6" onclick="toggleLineLoop(1,6)">🔁 One · 单句</button> <span class="who a">Ben</span><span class="en">I&#x27;m going to the library this morning. Then I&#x27;ll fix my bike.</span><span class="pcount" id="pc1-6"></span><span class="zh">我上午去图书馆。然后修我的自行车。</span></li><li id="row1-7"><button class="pbtn" onclick="playLine(1,7)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr1-7" onclick="toggleLineLoop(1,7)">🔁 One · 单句</button> <span class="who b">Mrs. Chen</span><span class="en">It&#x27;s cold outside. Take your warm jacket.</span><span class="pcount" id="pc1-7"></span><span class="zh">外面冷。穿上你的厚外套。</span></li><li id="row1-8"><button class="pbtn" onclick="playLine(1,8)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr1-8" onclick="toggleLineLoop(1,8)">🔁 One · 单句</button> <span class="who a">Ben</span><span class="en">Good idea. Oh no — where are my keys?</span><span class="pcount" id="pc1-8"></span><span class="zh">好主意。哎呀——我的钥匙呢？</span></li><li id="row1-9"><button class="pbtn" onclick="playLine(1,9)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr1-9" onclick="toggleLineLoop(1,9)">🔁 One · 单句</button> <span class="who b">Mrs. Chen</span><span class="en">Look, they&#x27;re on the table, next to your book.</span><span class="pcount" id="pc1-9"></span><span class="zh">看，在桌子上，你书的旁边。</span></li><li id="row1-10"><button class="pbtn" onclick="playLine(1,10)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr1-10" onclick="toggleLineLoop(1,10)">🔁 One · 单句</button> <span class="who a">Ben</span><span class="en">Ha! Thank you. See you at dinner.</span><span class="pcount" id="pc1-10"></span><span class="zh">哈！谢谢。晚饭见。</span></li></ol>
+</section>
+
+<section class="card">
+  <h2>Dialogue 2 · The Neighbour&#x27;s Garden<br><span class="cnt">邻居的花园</span></h2>
+  <p class="scene">Ben meets his neighbour, Mrs. Ortiz, outside her house.<br>本在邻居奥尔蒂斯太太家门外遇见她。</p>
+  <audio id="a2" controls preload="metadata" src="d2.mp3"></audio>
+  <div class="btns">
+    <button class="loop" onclick="toggleLoop(2, this)">🔁 Repeat · 循环播放: OFF</button>
+  </div>
+  <div class="speedrow"><label>🐢 Speed · 语速 <span id="s2v">1.00×</span></label><input type="range" min="0.5" max="1.5" step="0.05" value="1" oninput="sliderSpeed(2, this)"></div>
+  <div class="counter" id="c2">🔁 Repeated: 0 times · 已重复：0 次</div>
+  <ol><li id="row2-1"><button class="pbtn" onclick="playLine(2,1)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr2-1" onclick="toggleLineLoop(2,1)">🔁 One · 单句</button> <span class="who a">Ben</span><span class="en">Hi, Mrs. Ortiz. Your garden looks beautiful.</span><span class="pcount" id="pc2-1"></span><span class="zh">嗨，奥尔蒂斯太太。您的花园真漂亮。</span></li><li id="row2-2"><button class="pbtn" onclick="playLine(2,2)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr2-2" onclick="toggleLineLoop(2,2)">🔁 One · 单句</button> <span class="who b">Mrs. Ortiz</span><span class="en">Thank you, Ben. The tomatoes are doing well this year.</span><span class="pcount" id="pc2-2"></span><span class="zh">谢谢，本。今年的西红柿长得很好。</span></li><li id="row2-3"><button class="pbtn" onclick="playLine(2,3)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr2-3" onclick="toggleLineLoop(2,3)">🔁 One · 单句</button> <span class="who a">Ben</span><span class="en">Can I help you with anything?</span><span class="pcount" id="pc2-3"></span><span class="zh">有什么需要我帮忙的吗？</span></li><li id="row2-4"><button class="pbtn" onclick="playLine(2,4)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr2-4" onclick="toggleLineLoop(2,4)">🔁 One · 单句</button> <span class="who b">Mrs. Ortiz</span><span class="en">Actually, yes. We&#x27;re going away this weekend.</span><span class="pcount" id="pc2-4"></span><span class="zh">还真有。我们这周末要出门。</span></li><li id="row2-5"><button class="pbtn" onclick="playLine(2,5)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr2-5" onclick="toggleLineLoop(2,5)">🔁 One · 单句</button> <span class="who b">Mrs. Ortiz</span><span class="en">Could you water my flowers on Saturday and Sunday?</span><span class="pcount" id="pc2-5"></span><span class="zh">你能在周六和周日帮我浇花吗？</span></li><li id="row2-6"><button class="pbtn" onclick="playLine(2,6)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr2-6" onclick="toggleLineLoop(2,6)">🔁 One · 单句</button> <span class="who a">Ben</span><span class="en">Of course. Morning or evening?</span><span class="pcount" id="pc2-6"></span><span class="zh">当然。早上还是晚上？</span></li><li id="row2-7"><button class="pbtn" onclick="playLine(2,7)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr2-7" onclick="toggleLineLoop(2,7)">🔁 One · 单句</button> <span class="who b">Mrs. Ortiz</span><span class="en">Evening is better. The sun is too strong at noon.</span><span class="pcount" id="pc2-7"></span><span class="zh">晚上好一点。中午太阳太强了。</span></li><li id="row2-8"><button class="pbtn" onclick="playLine(2,8)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr2-8" onclick="toggleLineLoop(2,8)">🔁 One · 单句</button> <span class="who a">Ben</span><span class="en">No problem. I&#x27;ll water them at seven.</span><span class="pcount" id="pc2-8"></span><span class="zh">没问题。我七点浇。</span></li><li id="row2-9"><button class="pbtn" onclick="playLine(2,9)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr2-9" onclick="toggleLineLoop(2,9)">🔁 One · 单句</button> <span class="who b">Mrs. Ortiz</span><span class="en">You&#x27;re very kind. I&#x27;ll bring you some tomatoes when we&#x27;re back.</span><span class="pcount" id="pc2-9"></span><span class="zh">你真好。我们回来给你带些西红柿。</span></li><li id="row2-10"><button class="pbtn" onclick="playLine(2,10)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr2-10" onclick="toggleLineLoop(2,10)">🔁 One · 单句</button> <span class="who a">Ben</span><span class="en">Sounds great. Have a good trip!</span><span class="pcount" id="pc2-10"></span><span class="zh">太好了。祝你们旅途愉快！</span></li></ol>
+</section>
+
+<section class="card">
+  <h2>Dialogue 3 · At the Corner Store<br><span class="cnt">在街角小店</span></h2>
+  <p class="scene">Ben goes to the small shop on his street. Rosa works there.<br>本去街上的小店。罗莎在那里工作。</p>
+  <audio id="a3" controls preload="metadata" src="d3.mp3"></audio>
+  <div class="btns">
+    <button class="loop" onclick="toggleLoop(3, this)">🔁 Repeat · 循环播放: OFF</button>
+  </div>
+  <div class="speedrow"><label>🐢 Speed · 语速 <span id="s3v">1.00×</span></label><input type="range" min="0.5" max="1.5" step="0.05" value="1" oninput="sliderSpeed(3, this)"></div>
+  <div class="counter" id="c3">🔁 Repeated: 0 times · 已重复：0 次</div>
+  <ol><li id="row3-1"><button class="pbtn" onclick="playLine(3,1)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr3-1" onclick="toggleLineLoop(3,1)">🔁 One · 单句</button> <span class="who a">Ben</span><span class="en">Hi, Rosa. How&#x27;s business today?</span><span class="pcount" id="pc3-1"></span><span class="zh">嗨，罗莎。今天生意怎么样？</span></li><li id="row3-2"><button class="pbtn" onclick="playLine(3,2)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr3-2" onclick="toggleLineLoop(3,2)">🔁 One · 单句</button> <span class="who b">Rosa</span><span class="en">Hi, Ben. Quiet this morning. What do you need?</span><span class="pcount" id="pc3-2"></span><span class="zh">嗨，本。今天上午很安静。你需要什么？</span></li><li id="row3-3"><button class="pbtn" onclick="playLine(3,3)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr3-3" onclick="toggleLineLoop(3,3)">🔁 One · 单句</button> <span class="who a">Ben</span><span class="en">A bottle of milk and six eggs, please.</span><span class="pcount" id="pc3-3"></span><span class="zh">一瓶牛奶和六个鸡蛋。</span></li><li id="row3-4"><button class="pbtn" onclick="playLine(3,4)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr3-4" onclick="toggleLineLoop(3,4)">🔁 One · 单句</button> <span class="who b">Rosa</span><span class="en">Here you are. Anything else?</span><span class="pcount" id="pc3-4"></span><span class="zh">给你。还要别的吗？</span></li><li id="row3-5"><button class="pbtn" onclick="playLine(3,5)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr3-5" onclick="toggleLineLoop(3,5)">🔁 One · 单句</button> <span class="who a">Ben</span><span class="en">Do you have any fresh bread?</span><span class="pcount" id="pc3-5"></span><span class="zh">有新鲜面包吗？</span></li><li id="row3-6"><button class="pbtn" onclick="playLine(3,6)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr3-6" onclick="toggleLineLoop(3,6)">🔁 One · 单句</button> <span class="who b">Rosa</span><span class="en">Yes, it came in an hour ago. It&#x27;s still warm.</span><span class="pcount" id="pc3-6"></span><span class="zh">有，一小时前刚到的。还是热的。</span></li><li id="row3-7"><button class="pbtn" onclick="playLine(3,7)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr3-7" onclick="toggleLineLoop(3,7)">🔁 One · 单句</button> <span class="who a">Ben</span><span class="en">Great, I&#x27;ll take one. How much is everything?</span><span class="pcount" id="pc3-7"></span><span class="zh">太好了，我要一个。一共多少钱？</span></li><li id="row3-8"><button class="pbtn" onclick="playLine(3,8)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr3-8" onclick="toggleLineLoop(3,8)">🔁 One · 单句</button> <span class="who b">Rosa</span><span class="en">That&#x27;s eight dollars fifty.</span><span class="pcount" id="pc3-8"></span><span class="zh">一共八块五。</span></li><li id="row3-9"><button class="pbtn" onclick="playLine(3,9)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr3-9" onclick="toggleLineLoop(3,9)">🔁 One · 单句</button> <span class="who a">Ben</span><span class="en">Here&#x27;s ten. Keep the change... no wait, I need the coins for the bus.</span><span class="pcount" id="pc3-9"></span><span class="zh">给你十块。零钱不用找了……等一下，我需要硬币坐公交车。</span></li><li id="row3-10"><button class="pbtn" onclick="playLine(3,10)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr3-10" onclick="toggleLineLoop(3,10)">🔁 One · 单句</button> <span class="who b">Rosa</span><span class="en">Ha, no worries. Here&#x27;s your change. Have a good day!</span><span class="pcount" id="pc3-10"></span><span class="zh">哈，没关系。这是找你的钱。祝你今天愉快！</span></li></ol>
+</section>
+
+<section class="card">
+  <h2>Dialogue 4 · A Phone Call<br><span class="cnt">一通电话</span></h2>
+  <p class="scene">Ben calls his sister Kate about Sunday dinner.<br>本给姐姐凯特打电话，问周日晚饭的事。</p>
+  <audio id="a4" controls preload="metadata" src="d4.mp3"></audio>
+  <div class="btns">
+    <button class="loop" onclick="toggleLoop(4, this)">🔁 Repeat · 循环播放: OFF</button>
+  </div>
+  <div class="speedrow"><label>🐢 Speed · 语速 <span id="s4v">1.00×</span></label><input type="range" min="0.5" max="1.5" step="0.05" value="1" oninput="sliderSpeed(4, this)"></div>
+  <div class="counter" id="c4">🔁 Repeated: 0 times · 已重复：0 次</div>
+  <ol><li id="row4-1"><button class="pbtn" onclick="playLine(4,1)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr4-1" onclick="toggleLineLoop(4,1)">🔁 One · 单句</button> <span class="who b">Kate</span><span class="en">Hello?</span><span class="pcount" id="pc4-1"></span><span class="zh">喂？</span></li><li id="row4-2"><button class="pbtn" onclick="playLine(4,2)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr4-2" onclick="toggleLineLoop(4,2)">🔁 One · 单句</button> <span class="who a">Ben</span><span class="en">Hi, Kate. It&#x27;s Ben. What&#x27;s up?</span><span class="pcount" id="pc4-2"></span><span class="zh">嗨，凯特。我是本。最近怎么样？</span></li><li id="row4-3"><button class="pbtn" onclick="playLine(4,3)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr4-3" onclick="toggleLineLoop(4,3)">🔁 One · 单句</button> <span class="who b">Kate</span><span class="en">Oh, hi! Not much. I&#x27;m just cooking dinner.</span><span class="pcount" id="pc4-3"></span><span class="zh">哦，嗨！没什么。我正在做晚饭。</span></li><li id="row4-4"><button class="pbtn" onclick="playLine(4,4)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr4-4" onclick="toggleLineLoop(4,4)">🔁 One · 单句</button> <span class="who a">Ben</span><span class="en">I&#x27;m calling about Sunday. Are we still having dinner at your place?</span><span class="pcount" id="pc4-4"></span><span class="zh">我打电话是问周日的事。我们还是在你家吃晚饭吗？</span></li><li id="row4-5"><button class="pbtn" onclick="playLine(4,5)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr4-5" onclick="toggleLineLoop(4,5)">🔁 One · 单句</button> <span class="who b">Kate</span><span class="en">Yes! Come at six. Mom and Dad will be there too.</span><span class="pcount" id="pc4-5"></span><span class="zh">对！六点来。爸妈也会来。</span></li><li id="row4-6"><button class="pbtn" onclick="playLine(4,6)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr4-6" onclick="toggleLineLoop(4,6)">🔁 One · 单句</button> <span class="who a">Ben</span><span class="en">Can I bring anything?</span><span class="pcount" id="pc4-6"></span><span class="zh">我需要带点什么吗？</span></li><li id="row4-7"><button class="pbtn" onclick="playLine(4,7)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr4-7" onclick="toggleLineLoop(4,7)">🔁 One · 单句</button> <span class="who b">Kate</span><span class="en">Could you bring a cake? The kids love cake.</span><span class="pcount" id="pc4-7"></span><span class="zh">你能带个蛋糕吗？孩子们喜欢吃蛋糕。</span></li><li id="row4-8"><button class="pbtn" onclick="playLine(4,8)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr4-8" onclick="toggleLineLoop(4,8)">🔁 One · 单句</button> <span class="who a">Ben</span><span class="en">Sure. Chocolate or lemon?</span><span class="pcount" id="pc4-8"></span><span class="zh">当然。巧克力的还是柠檬的？</span></li><li id="row4-9"><button class="pbtn" onclick="playLine(4,9)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr4-9" onclick="toggleLineLoop(4,9)">🔁 One · 单句</button> <span class="who b">Kate</span><span class="en">Chocolate, please. And don&#x27;t be late this time!</span><span class="pcount" id="pc4-9"></span><span class="zh">巧克力的。还有，这次别迟到！</span></li><li id="row4-10"><button class="pbtn" onclick="playLine(4,10)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr4-10" onclick="toggleLineLoop(4,10)">🔁 One · 单句</button> <span class="who a">Ben</span><span class="en">Ha, I promise. See you on Sunday.</span><span class="pcount" id="pc4-10"></span><span class="zh">哈，我保证。周日见。</span></li></ol>
+</section>
+
+<section class="card">
+  <h2>Dialogue 5 · Evening in the Park<br><span class="cnt">傍晚的公园</span></h2>
+  <p class="scene">In the evening, Ben meets his friend Ann in the park.<br>傍晚，本在公园里遇见朋友安。</p>
+  <audio id="a5" controls preload="metadata" src="d5.mp3"></audio>
+  <div class="btns">
+    <button class="loop" onclick="toggleLoop(5, this)">🔁 Repeat · 循环播放: OFF</button>
+  </div>
+  <div class="speedrow"><label>🐢 Speed · 语速 <span id="s5v">1.00×</span></label><input type="range" min="0.5" max="1.5" step="0.05" value="1" oninput="sliderSpeed(5, this)"></div>
+  <div class="counter" id="c5">🔁 Repeated: 0 times · 已重复：0 次</div>
+  <ol><li id="row5-1"><button class="pbtn" onclick="playLine(5,1)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr5-1" onclick="toggleLineLoop(5,1)">🔁 One · 单句</button> <span class="who a">Ben</span><span class="en">Hi, Ann. Fancy meeting you here.</span><span class="pcount" id="pc5-1"></span><span class="zh">嗨，安。真巧，在这儿碰到你。</span></li><li id="row5-2"><button class="pbtn" onclick="playLine(5,2)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr5-2" onclick="toggleLineLoop(5,2)">🔁 One · 单句</button> <span class="who b">Ann</span><span class="en">Hi, Ben! I come here every evening. I love feeding the ducks.</span><span class="pcount" id="pc5-2"></span><span class="zh">嗨，本！我每天晚上都来。我喜欢喂鸭子。</span></li><li id="row5-3"><button class="pbtn" onclick="playLine(5,3)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr5-3" onclick="toggleLineLoop(5,3)">🔁 One · 单句</button> <span class="who a">Ben</span><span class="en">How was your day?</span><span class="pcount" id="pc5-3"></span><span class="zh">你今天过得怎么样？</span></li><li id="row5-4"><button class="pbtn" onclick="playLine(5,4)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr5-4" onclick="toggleLineLoop(5,4)">🔁 One · 单句</button> <span class="who b">Ann</span><span class="en">Busy, but good. I finished my big project at work.</span><span class="pcount" id="pc5-4"></span><span class="zh">很忙，但是很好。我完成了工作上的大项目。</span></li><li id="row5-5"><button class="pbtn" onclick="playLine(5,5)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr5-5" onclick="toggleLineLoop(5,5)">🔁 One · 单句</button> <span class="who a">Ben</span><span class="en">That&#x27;s great. You worked on it for weeks.</span><span class="pcount" id="pc5-5"></span><span class="zh">太好了。那个项目你做了好几周。</span></li><li id="row5-6"><button class="pbtn" onclick="playLine(5,6)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr5-6" onclick="toggleLineLoop(5,6)">🔁 One · 单句</button> <span class="who b">Ann</span><span class="en">I know. I feel free now! What about you?</span><span class="pcount" id="pc5-6"></span><span class="zh">是啊。我现在感觉自由了！你呢？</span></li><li id="row5-7"><button class="pbtn" onclick="playLine(5,7)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr5-7" onclick="toggleLineLoop(5,7)">🔁 One · 单句</button> <span class="who a">Ben</span><span class="en">I fixed my bike today. It rides like new.</span><span class="pcount" id="pc5-7"></span><span class="zh">我今天修好了自行车。骑起来像新的一样。</span></li><li id="row5-8"><button class="pbtn" onclick="playLine(5,8)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr5-8" onclick="toggleLineLoop(5,8)">🔁 One · 单句</button> <span class="who b">Ann</span><span class="en">Nice. Hey, do you want to ride to the lake on Saturday?</span><span class="pcount" id="pc5-8"></span><span class="zh">不错。嘿，你周六想骑车去湖边吗？</span></li><li id="row5-9"><button class="pbtn" onclick="playLine(5,9)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr5-9" onclick="toggleLineLoop(5,9)">🔁 One · 单句</button> <span class="who a">Ben</span><span class="en">I&#x27;d love to. Let&#x27;s meet here at ten in the morning.</span><span class="pcount" id="pc5-9"></span><span class="zh">我很想去。我们上午十点在这里见。</span></li><li id="row5-10"><button class="pbtn" onclick="playLine(5,10)" title="Play this line only">▶</button> <button class="pbtn rpt" id="pr5-10" onclick="toggleLineLoop(5,10)">🔁 One · 单句</button> <span class="who b">Ann</span><span class="en">Perfect. See you then. Don&#x27;t forget your camera!</span><span class="pcount" id="pc5-10"></span><span class="zh">太好了。到时见。别忘了带相机！</span></li></ol>
+</section>
+<footer>Everyday Dialogues · 每日对话 — listening page 听力页</footer>
+<script>
+var PREFIX = '';
+
+var loops = {};
+var counts = {};
+var speeds = {};
+function toggleLoop(i, btn) {
+  var a = document.getElementById('a' + i);
+  loops[i] = !loops[i];
+  btn.classList.toggle('on', loops[i]);
+  btn.textContent = loops[i] ? '🔁 Repeat · 循环播放: ON' : '🔁 Repeat · 循环播放: OFF';
+  if (loops[i] && a.paused) { pa.pause(); a.play(); }
+}
+document.querySelectorAll('audio').forEach(function(a) {
+  a.addEventListener('ended', function() {
+    var i = a.id.slice(1);
+    if (loops[i]) {
+      counts[i] = (counts[i] || 0) + 1;
+      var n = counts[i];
+      document.getElementById('c' + i).textContent = '🔁 Repeated: ' + n + (n == 1 ? ' time' : ' times') + ' · 已重复：' + n + ' 次';
+      a.currentTime = 0;
+      a.play();
+    }
+  });
+  a.addEventListener('play', function() { pa.pause(); });
+});
+function sliderSpeed(i, el) {
+  var a = document.getElementById('a' + i);
+  var s = parseFloat(el.value);
+  a.playbackRate = s;
+  speeds[i] = s;
+  document.getElementById('s' + i + 'v').textContent = s.toFixed(2) + '×';
+  if (pa.dataset.sec == i && !pa.paused) pa.playbackRate = s;
+}
+var pa = new Audio();
+pa.preload = 'auto';
+var focusKey = null;
+var focusCount = {};
+function clipSrc(i, j) { return PREFIX + 'd' + i + '-l' + j + '.mp3'; }
+function markFocus(k) {
+  document.querySelectorAll('li.focus').forEach(function(li) { li.classList.remove('focus'); });
+  document.querySelectorAll('button.rpt.on').forEach(function(b) { b.classList.remove('on'); b.textContent = '🔁 One · 单句'; });
+  if (k) {
+    var row = document.getElementById('row' + k);
+    if (row) row.classList.add('focus');
+    if (focusKey == k) {
+      var btn = document.getElementById('pr' + k);
+      if (btn) { btn.classList.add('on'); btn.textContent = '🔁 One · 单句: ON'; }
+    }
+  }
+}
+function playLine(i, j) {
+  document.querySelectorAll('audio').forEach(function(a) { a.pause(); });
+  var k = i + '-' + j;
+  if (pa.dataset.k != k) { pa.src = clipSrc(i, j); pa.dataset.k = k; pa.dataset.sec = i; }
+  pa.playbackRate = speeds[i] || 1;
+  pa.currentTime = 0;
+  pa.play();
+  markFocus(k);
+}
+function toggleLineLoop(i, j) {
+  var k = i + '-' + j;
+  if (focusKey == k) {
+    focusKey = null;
+    pa.pause();
+    markFocus(null);
+  } else {
+    focusKey = k;
+    playLine(i, j);
+  }
+}
+pa.addEventListener('ended', function() {
+  var k = pa.dataset.k;
+  if (focusKey && focusKey == k) {
+    focusCount[k] = (focusCount[k] || 0) + 1;
+    var n = focusCount[k];
+    var el = document.getElementById('pc' + k);
+    if (el) el.textContent = '🔁 ×' + n + ' · 已重复 ' + n + ' 次';
+    pa.currentTime = 0;
+    pa.play();
+  }
+});
+
+</script>
+</body></html>
